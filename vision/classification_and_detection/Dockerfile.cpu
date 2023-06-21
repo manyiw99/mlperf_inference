@@ -36,11 +36,19 @@ RUN pip install --upgrade pip
 RUN pip install cmake
 RUN pip install future pillow onnx opencv-python-headless tensorflow onnxruntime
 RUN pip install Cython && pip install pycocotools
+RUN pip install protobuf==3.20.*
 RUN cd /tmp && \
-    git clone --recursive https://github.com/mlcommons/inference && \
-    cd inference/loadgen && \
+    git clone --recursive https://github.com/manyiw99/mlperf_inference && \
+    cd mlperf_inference/loadgen && \
     pip install pybind11 && \
     CFLAGS="-std=c++14" python setup.py install && \
     rm -rf mlperf
+RUN cd /tmp/mlperf_inference/vision/classification_and_detection/data_imagenet && \
+    wget https://image-net.org/data/ILSVRC/2012/ILSVRC2012_img_val.tar && \
+    tar xf ILSVRC2012_img_val.tar
+RUN python -c \
+    "import os; root = os.getcwd(); \
+    os.environ['MODEL_DIR'] = os.path.join(root, 'models'); \
+    os.environ['DATA_DIR'] = os.path.join(root, 'data_imagenet')"
 
 ENTRYPOINT ["/bin/bash"]

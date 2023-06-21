@@ -4,6 +4,11 @@ if [ $# -lt 1 ]; then
     echo "usage: $0 tf|onnxruntime|pytorch|tflite|tvm-onnx|tvm-pytorch [resnet50|mobilenet|ssd-mobilenet|ssd-resnet34|retinanet] [cpu|gpu]"
     exit 1
 fi
+
+root=$(pwd)
+export MODEL_DIR="$root/models"
+export DATA_DIR="$root/data_imagenet"
+
 if [ "x$DATA_DIR" == "x" ]; then
     echo "DATA_DIR not set" && exit 1
 fi

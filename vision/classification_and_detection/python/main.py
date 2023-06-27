@@ -213,14 +213,16 @@ def get_args():
     """Parse commandline."""
     parser = argparse.ArgumentParser()
     parser.add_argument("--dataset", choices=SUPPORTED_DATASETS.keys(), help="dataset")
-    parser.add_argument("--dataset-path", required=True, help="path to the dataset")
+    # parser.add_argument("--dataset-path", required=True, help="path to the dataset")
+    parser.add_argument("--dataset-path", default="../../data_imagenet", help="path to the dataset")
     parser.add_argument("--dataset-list", help="path to the dataset list")
     parser.add_argument("--data-format", choices=["NCHW", "NHWC"], help="data format")
     parser.add_argument("--profile", choices=SUPPORTED_PROFILES.keys(), help="standard profiles")
     parser.add_argument("--scenario", default="SingleStream",
                         help="mlperf benchmark scenario, one of " + str(list(SCENARIO_MAP.keys())))
     parser.add_argument("--max-batchsize", type=int, help="max batch size in a single inference")
-    parser.add_argument("--model", required=True, help="model file")
+    # parser.add_argument("--model", required=True, help="model file")
+    parser.add_argument("--model", default="../../models", help="model file")
     parser.add_argument("--output", default="output", help="test results")
     parser.add_argument("--inputs", help="model inputs")
     parser.add_argument("--outputs", help="model outputs")

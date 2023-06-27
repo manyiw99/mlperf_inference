@@ -31,6 +31,5 @@ opts="--mlperf_conf ./mlperf.conf --profile $profile $common_opt \
     --output $OUTPUT_DIR $extra_args $EXTRA_OPS $@"
 
 docker run $gpus -e opts="$opts" \
-    -v `pwd`:/mlperf \
     -v $OUTPUT_DIR:/output -v /proc:/host_proc \
-    -t $image:latest /mlperf/run_helper.sh 2>&1 | tee $OUTPUT_DIR/output.txt
+    -t $image:latest 2>&1 | tee $OUTPUT_DIR/output.txt

@@ -32,4 +32,4 @@ opts="--mlperf_conf ./mlperf.conf --profile $profile $common_opt \
 
 docker run $gpus -e opts="$opts" \
     -v $OUTPUT_DIR:/output -v /proc:/host_proc \
-    -t $image:latest 2>&1 | tee $OUTPUT_DIR/output.txt
+    $image:latest 2>&1 | tee $OUTPUT_DIR/output.txt

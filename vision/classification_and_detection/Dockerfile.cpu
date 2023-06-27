@@ -49,6 +49,4 @@ RUN cd /tmp && \
     CFLAGS="-std=c++14" python setup.py install && \
     rm -rf mlperf
 
-CMD /tmp/mlperf_inference/vision/classification_and_detection/run_helper.sh
-
-ENTRYPOINT ["/bin/bash"]
+ENTRYPOINT ["/bin/bash", "/tmp/mlperf_inference/vision/classification_and_detection/run_helper.sh"]

@@ -222,7 +222,7 @@ def get_args():
                         help="mlperf benchmark scenario, one of " + str(list(SCENARIO_MAP.keys())))
     parser.add_argument("--max-batchsize", type=int, help="max batch size in a single inference")
     # parser.add_argument("--model", required=True, help="model file")
-    parser.add_argument("--model", default="/tmp/mlperf_inference/vision/classification_and_detection/models", help="model file")
+    parser.add_argument("--model", default="/tmp/mlperf_inference/vision/classification_and_detection/models/resnet50_v1.pb", help="model file")
     parser.add_argument("--output", default="output", help="test results")
     parser.add_argument("--inputs", help="model inputs")
     parser.add_argument("--outputs", help="model outputs")

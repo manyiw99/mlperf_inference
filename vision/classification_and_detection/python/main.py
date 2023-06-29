@@ -239,7 +239,7 @@ def get_args():
     parser.add_argument("--debug", action="store_true", help="debug, turn traces on")
 
     # file to use mlperf rules compliant parameters
-    parser.add_argument("--mlperf_conf", default="../../mlperf.conf", help="mlperf rules config")
+    parser.add_argument("--mlperf_conf", default="/tmp/mlperf_inference/vision/classification_and_detection/mlperf.conf", help="mlperf rules config")
     # file for user LoadGen settings such as target QPS
     parser.add_argument("--user_conf", default="user.conf", help="user config for user LoadGen settings such as target QPS")
     # file for LoadGen audit settings

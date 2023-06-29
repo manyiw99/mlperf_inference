@@ -493,7 +493,8 @@ def main():
                         threads=args.threads,
                         **kwargs)
     # load model to backend
-    model = backend.load(args.model, inputs=args.inputs, outputs=args.outputs)
+    # model = backend.load(args.model, inputs=args.inputs, outputs=args.outputs)
+    model = backend.load(args.model, inputs=['input_tensor:0'], outputs=['ArgMax:0'])
     final_results = {
         "runtime": model.name(),
         "version": model.version(),

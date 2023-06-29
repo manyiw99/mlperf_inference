@@ -28,6 +28,10 @@ class BackendTensorflow(backend.Backend):
 
     def load(self, model_path, inputs=None, outputs=None):
         # there is no input/output meta data i the graph so it need to come from config.
+        print("Input!!!!!!")
+        print(inputs)
+        print("Output!!!!!!")
+        print(outputs)
         if not inputs:
             raise ValueError("BackendTensorflow needs inputs")
         if not outputs:

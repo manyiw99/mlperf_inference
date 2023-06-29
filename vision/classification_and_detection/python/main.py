@@ -241,7 +241,7 @@ def get_args():
     # file to use mlperf rules compliant parameters
     parser.add_argument("--mlperf_conf", default="/tmp/mlperf_inference/vision/classification_and_detection/mlperf.conf", help="mlperf rules config")
     # file for user LoadGen settings such as target QPS
-    parser.add_argument("--user_conf", default="user.conf", help="user config for user LoadGen settings such as target QPS")
+    parser.add_argument("--user_conf", default="/tmp/mlperf_inference/vision/classification_and_detection/user.conf", help="user config for user LoadGen settings such as target QPS")
     # file for LoadGen audit settings
     parser.add_argument("--audit_conf", default="audit.config", help="config for LoadGen audit settings")
 
@@ -502,12 +502,14 @@ def main():
         "cmdline": str(args),
     }
 
-    mlperf_conf = os.path.abspath(args.mlperf_conf)
+    # mlperf_conf = os.path.abspath(args.mlperf_conf)
+    mlperf_conf = "/tmp/mlperf_inference/vision/classification_and_detection/mlperf.conf"
     if not os.path.exists(mlperf_conf):
         log.error("{} not found".format(mlperf_conf))
         sys.exit(1)
 
-    user_conf = os.path.abspath(args.user_conf)
+    # user_conf = os.path.abspath(args.user_conf)
+    user_conf = "/tmp/mlperf_inference/vision/classification_and_detection/user.conf"
     if not os.path.exists(user_conf):
         log.error("{} not found".format(user_conf))
         sys.exit(1)
@@ -515,7 +517,8 @@ def main():
     audit_config = os.path.abspath(args.audit_conf)
 
     if args.output:
-        output_dir = os.path.abspath(args.output)
+        # output_dir = os.path.abspath(args.output)
+        output_dir = "/tmp/mlperf_inference/vision/classification_and_detection/output"
         os.makedirs(output_dir, exist_ok=True)
         os.chdir(output_dir)
 
